@@ -50,9 +50,9 @@ class MapMyIndia {
     }
   }
 
-  Future<String> getStillMapImageUrl(
+  String getStillMapImageUrl(
       {required StillMapImageQueryParams stillMapImageQueryParams}) {
     _checkInitialisation();
-    return _apIs.getStillMapImageUrl(stillMapImageQueryParams);
+    return _apIs.getStillMapImageUrl(_manager!.apiKey,stillMapImageQueryParams);
   }
 }

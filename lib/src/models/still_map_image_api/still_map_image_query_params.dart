@@ -2,9 +2,6 @@ class StillMapImageQueryParams {
   ///A WGS-84 position coordinate that specifies the centre of the image requested.
   final String center;
 
-  ///The REST API licence key allocated to you by signing into our services and registering yourself as a developer.
-  final String restKey;
-
   ///The zoom level for which the image is requested. Ranges from 4 to 18 with 18 being the highest zoomed in level.
   final int zoom;
 
@@ -28,7 +25,7 @@ class StillMapImageQueryParams {
   ///The URL of the Custom Marker.
   final String? markerIcons;
 
-  StillMapImageQueryParams(this.center, this.restKey,
+  StillMapImageQueryParams(this.center,
       {this.zoom = 15,
       this.size = "400x400",
       this.ssf = 0,

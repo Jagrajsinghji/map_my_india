@@ -35,9 +35,9 @@ class APIs {
   ///The image can be a retina image and markers can be added to the image to indicate position of any object.
   ///
   /// return Url which can be used with [Image.network]
-  Future<String> getStillMapImageUrl(StillMapImageQueryParams params) async {
+  String getStillMapImageUrl(String key, StillMapImageQueryParams params) {
     String url =
-        "${BaseUrls.stillMapApi}/${params.restKey}/still_image${params.toQueryString()}";
+        "${BaseUrls.stillMapApi}/$key/still_image${params.toQueryString()}";
     return url;
   }
 }
