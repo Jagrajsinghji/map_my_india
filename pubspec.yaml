@@ -1,6 +1,6 @@
 name: map_my_india
 description: A package using MapMyIndia Rest APIs
-version: 0.0.1
+version: 0.0.2
 homepage:
 
 environment:
