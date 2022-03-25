@@ -32,7 +32,7 @@ class SuggestionQueryParams {
   final String? location;
 
   ///It takes in the country code. Possible values are listed in a table [here](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md). Default is India (IND).
-  final String region;
+  final String? region;
 
   ///It is the valueless parameter provides the different address attributes in a structured object.
   final bool? tokenizeAddress;
@@ -66,9 +66,9 @@ class SuggestionQueryParams {
 
   SuggestionQueryParams(this.query,
       {this.location,
-      this.region = "IND",
+      this.region,
       this.tokenizeAddress,
-      Pod pod = Pod.city,
+      Pod? pod,
       this.filter,
       this.bridge,
       this.hyperLocal}) {
