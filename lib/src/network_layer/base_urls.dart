@@ -4,5 +4,7 @@ class BaseUrls {
   static const String autoSuggestApi =
       "https://atlas.mapmyindia.com/api/places/search/json";
   static const String stillMapApi =
-      "https://apis.mapmyindia.com/advancedmaps/v1/";
+      "https://apis.mapmyindia.com/advancedmaps/v1";
+  static const String geocodeApi =
+      "https://atlas.mapmyindia.com/api/places/geocode";
 }

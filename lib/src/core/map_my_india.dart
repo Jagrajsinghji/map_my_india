@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:map_my_india/src/core/account_manager.dart';
+import 'package:map_my_india/src/models/geocode_api/geocode_query_params.dart';
+import 'package:map_my_india/src/models/geocode_api/geocode_response.dart';
 import 'package:map_my_india/src/models/token_generation_api/token_generation_body.dart';
 import 'package:map_my_india/src/network_layer/apis.dart';
 
@@ -29,7 +31,7 @@ class MapMyIndia {
     if (response.statusCode == 200) {
       return AuthInfo.fromJson(jsonDecode(response.body));
     } else {
-      throw response.body;
+      throw response;
     }
   }
 
@@ -46,13 +48,24 @@ class MapMyIndia {
     if (response.statusCode == 200) {
       return AutoSuggestResponse.fromJson(jsonDecode(response.body));
     } else {
-      throw response.body;
+      throw response;
     }
   }
 
   String getStillMapImageUrl(
       {required StillMapImageQueryParams stillMapImageQueryParams}) {
     _checkInitialisation();
-    return _apIs.getStillMapImageUrl(_manager!.apiKey,stillMapImageQueryParams);
+    return _apIs.getStillMapImageUrl(
+        _manager!.apiKey, stillMapImageQueryParams);
+  }
+
+  Future<GeocodeResponse> geocodeAddress(GeocodeQueryParams params) async {
+    _checkInitialisation();
+    var response = await _apIs.getGeocode(params, _authInfo);
+    if (response.statusCode == 200) {
+      return GeocodeResponse.fromJson(jsonDecode(response.body)['copResults']);
+    } else {
+      throw response;
+    }
   }
 }

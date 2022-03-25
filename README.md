@@ -5,6 +5,7 @@ This package is using MAPMYINDIA's REST APIs under the hood
 
 - AutoSuggest API
 - Still Map API
+- Geocode API
 
 ## Getting started
 

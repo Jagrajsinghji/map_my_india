@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:map_my_india/src/models/geocode_api/geocode_query_params.dart';
 import 'package:map_my_india/src/network_layer/base_urls.dart';
 
 import '../models/auto_suggest_api/suggestion_query_params.dart';
@@ -39,5 +40,16 @@ class APIs {
     String url =
         "${BaseUrls.stillMapApi}/$key/still_image${params.toQueryString()}";
     return url;
+  }
+
+  ///All mapping APIs that are used in mobile or web apps need some geo-position coordinates to refer to any given point on the map.
+  ///Our Geocoding API converts real addresses into these geographic reference positions to be placed on a map, be it for any street, area, postal code, POI or a house number etc.
+  Future<http.Response> getGeocode(
+      GeocodeQueryParams params, AuthInfo authInfo) async {
+    String url = "${BaseUrls.geocodeApi}${params.toQueryString()}";
+    var res = await http.get(Uri.parse(url), headers: {
+      "Authorization": "${authInfo.tokenType} ${authInfo.accessToken}"
+    });
+    return res;
   }
 }
